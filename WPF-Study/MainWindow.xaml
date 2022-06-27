@@ -1,0 +1,187 @@
+﻿<Window x:Class="WPF_Study.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_Study"
+        xmlns:control = "clr-namespace:WPF_Study"
+        mc:Ignorable="d"
+        Title="Реализация MVP" Height="700" Width="900">
+    <Window.Resources>
+        <ControlTemplate x:Key="TextBoxBaseControlTemplate" TargetType="{x:Type TextBoxBase}">
+            <Border Background="#FFD3EAF9" 
+                x:Name="Bd" BorderBrush="#FFD3EAF9"
+                BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+                <ScrollViewer x:Name="PART_ContentHost"/>
+            </Border>
+        </ControlTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="4*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition Width="11*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0">
+                        <Image Source="https://cdn-icons-png.flaticon.com/512/610/610413.png" Width="45"></Image>
+                    </TextBlock>
+                    <TextBlock Grid.Column="1" FontSize="18" Text="Srim ax - Output Messanger" VerticalAlignment="Center" FontFamily="Bahnschrift SemiBold"></TextBlock>
+                </Grid>
+                <TextBlock Grid.Row="1" Text="Wilson" FontSize="15" FontWeight="Bold" VerticalAlignment="Top" ></TextBlock>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="6*"></ColumnDefinition>
+                        <ColumnDefinition Width="1.5*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="1">
+                        <Image Source="https://cdn-icons-png.flaticon.com/512/1828/1828859.png" Height="37" Width="24"></Image>
+                    </TextBlock>
+                    <TextBox Grid.Column="2" Grid.ColumnSpan="2" FontSize="20" Text=" Search People" VerticalAlignment="Center" Foreground="#FF9C9A9A" Margin="0,0,10,0" Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="tbxValue" PreviewMouseLeftButtonDown="Tb_click" ></TextBox>
+                    <TextBlock Grid.Column="3">
+                        <Image Source="https://cdn-icons-png.flaticon.com/512/622/622669.png" Height="33" Width="21" >
+                            <Image.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="5.456"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Image.RenderTransform>
+                        </Image>
+                    </TextBlock>
+                </Grid>
+                <Grid Grid.Row="3" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10*"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Column="0" Text="All" Foreground="#FF02377F" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" MouseLeftButtonDown="btnAll"></TextBlock>
+                    <TextBlock Grid.Column="1" Text="Favorites" Foreground="#FF02377F" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" MouseLeftButtonDown="btnFav"></TextBlock>
+                    <TextBlock Grid.Column="2" Text="Recent " Foreground="#FF02377F" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom"   MouseLeftButtonDown="btnRec" ></TextBlock>
+                    <Rectangle Grid.Column="0" Grid.Row="1" Fill="#FF07AAFF" x:Name="all"></Rectangle>
+                    <Rectangle Grid.Column="1" Grid.Row="1" x:Name="fav"></Rectangle>
+                    <Rectangle Grid.Column="2" Grid.Row="1" x:Name="rec"></Rectangle>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="0">
+                <ScrollViewer>
+                    <StackPanel>
+                        <Expander Header="Administration" Foreground="#FF02377F" FontSize="20" x:Name="adm">
+                            <StackPanel x:Name="SPadm">
+                                <control:Contacts x:Name="cntSelectColor" />
+                            </StackPanel>
+                        </Expander>
+                        <Expander Header="Projects" Foreground="#FF02377F" FontSize="20" x:Name="pro">
+                            <StackPanel x:Name="SPpro"></StackPanel>
+                        </Expander>
+                        <Expander Header="Sales" Foreground="#FF02377F" FontSize="20" x:Name="sal" >
+                            <StackPanel x:Name="SPsal"></StackPanel>
+                        </Expander>
+                        <Expander Header="Offline Users" Foreground="Gray" FontSize="20" x:Name="ou">
+                            <StackPanel x:Name="SPou"></StackPanel>
+                        </Expander>
+                        <Expander Header="Chat Rooms" Foreground="#FF02377F" FontSize="20" x:Name="chr" >
+                            <StackPanel x:Name="Schr"></StackPanel>
+                        </Expander>
+                    </StackPanel>
+                </ScrollViewer>
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.6*"></RowDefinition>
+                <RowDefinition Height="0.3*"></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
+                <RowDefinition Height="0.2*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.8*"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="0.3*"></RowDefinition>
+                    <RowDefinition Height="0.07*" ></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Grid.Row="1" x:Name="ChatImg"></Image>
+                <TextBlock Grid.Column="0" Grid.Row="2" Foreground="#FF0885F9" x:Name="GroupName" HorizontalAlignment="Center" FontSize="10"/>
+                <Rectangle Grid.Column="0" Grid.Row="3" x:Name="ChatRectangle"></Rectangle>
+            </Grid>
+            <Grid Grid.Row="1" Background="#FFECECEC">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="0.7*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="1.5*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" FontSize="20" FontWeight="SemiBold" x:Name="ChatName" Margin="10,0,0,0"/>
+                <StackPanel x:Name="ChatInf" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="5" Orientation="Horizontal" Margin="10,0,0,0"></StackPanel>
+                <Grid Grid.Row="0" Grid.Column="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0">
+                        <Image Source="https://cdn-icons-png.flaticon.com/512/1827/1827379.png"></Image>
+                    </TextBlock>
+                    <TextBlock Grid.Column="1">
+                        <Image Source="https://cdn-icons.flaticon.com/png/512/4202/premium/4202263.png?token=exp=1655562673~hmac=ee5d1408e472c74b59c3875881b3a358"></Image>
+                    </TextBlock>
+                    <TextBlock Grid.Column="2">
+                        <Image Source="https://cdn-icons-png.flaticon.com/512/1827/1827349.png"></Image>
+                    </TextBlock>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <ScrollViewer Grid.Row="0" Grid.ColumnSpan="2">
+                    <StackPanel x:Name="MessageSP"></StackPanel>
+                </ScrollViewer>
+            </Grid>
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="1" Background="#FFECECEC" Content="Send"></Button>
+            </Grid>
+            <TextBox Grid.Row="4"></TextBox>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="WPF_Study.MessageLeft"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPF_Study"
+             mc:Ignorable="d" 
+             d:DesignHeight="90" d:DesignWidth="200">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="1.2*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <StackPanel HorizontalAlignment="Left" Grid.Row="0" Orientation="Horizontal">
+                <TextBlock x:Name="UserNameTxtB" HorizontalAlignment="Center" FontSize="16" VerticalAlignment="Center" Margin="5,0,5,0" Text="Christopher"></TextBlock>
+
+                <TextBlock x:Name="TimeTxtB" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="LightGray" Text="15.00"></TextBlock>
+                <TextBlock Margin="5"></TextBlock>
+
+            </StackPanel>
+            <StackPanel  Grid.Row="1">
+                <Polygon Margin="15,0,0,0" HorizontalAlignment="Left" Points="5, 15, 15, 5, 25, 15" Fill="LightGreen"></Polygon>
+                <Border
+                Margin="5,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                BorderBrush="LightGreen"
+                Background="LightGreen"
+                BorderThickness="3"
+                CornerRadius="10"
+                Padding="2">
+                    <StackPanel x:Name="MessagePanel"   VerticalAlignment="Center" Orientation="Horizontal">
+                        <TextBlock x:Name="MessageContent" HorizontalAlignment="Left" VerticalAlignment="Center" Text="Message"></TextBlock>
+                        <TextBlock Margin="3"></TextBlock>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>
